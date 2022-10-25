@@ -60,7 +60,7 @@ body {
     color: #d3d3d3
 }
 
-.login .form .btn-login {
+.login .form .submit {
     background: 0 0;
     text-decoration: none;
     color: #fff;
@@ -70,7 +70,7 @@ body {
     transition: .5s
 }
 
-.login .form .btn-login:hover {
+.login .form .submit:hover {
     background: #fff;
     color: #696969;
     transition: .5s

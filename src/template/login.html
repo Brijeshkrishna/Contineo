@@ -18,10 +18,10 @@
         
         <p class='login-msg'>Welcome back</p>
         <div class='form'>
-            <form>
-                <input type="text" placeholder='Username' class='text' id='username' required><br>
-                <input type="password" placeholder='Password' class='password'><br><br>
-                <a href="#" class='btn-login' id='do-login'>Login </a>
+            <form action='login' method='POST' >
+                <input type="text" placeholder='Username' class='text' name='username' required><br>
+                <input type="password" placeholder='Password' class='password' name ="password"><br><br>
+                <input type='submit' name='submit' class='submit' title="login">
                 <a href="#" class='forgot'>Forgot?</a>
             </form>
         </div>
