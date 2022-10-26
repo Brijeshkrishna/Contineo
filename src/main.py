@@ -1,9 +1,9 @@
 from bson import ObjectId
 from flask import *
-from form import LoginForm
+from .form import LoginForm
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager,UserMixin,login_user,logout_user,current_user,login_required
-from database import check_password
+from .database import check_password
 
 
 app = Flask(__name__, template_folder="template", static_folder="static")
