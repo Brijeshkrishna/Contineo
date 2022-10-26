@@ -58,5 +58,3 @@ def logout():
     session.clear()
     logout_user()
     return redirect(url_for('login'))
-
-app.run(debug=True,host="192.168.1.6")
