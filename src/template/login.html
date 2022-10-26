@@ -4,27 +4,91 @@
 <head>
     <meta charset="UTF-8">
     <title>Contineo Login</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
 </head>
 
-<body>
-    <section class='login' id='login'>
-        <div class='head'>
-            <h1 class='head-msg'>Contineo Login</h1>
-        </div>
-        
-        <p class='login-msg'>Welcome back</p>
-        <div class='form'>
-            <form action='login' method='POST' >
-                <input type="text" placeholder='Username' class='text' name='username' required><br>
-                <input type="password" placeholder='Password' class='password' name ="password"><br><br>
-                <input type='submit' name='submit' class='submit' title="login">
-                <a href="#" class='forgot'>Forgot?</a>
-            </form>
-        </div>
-    </section>
+<body style="background: #041C32">
+    <main role="main" class="container">
+        <section class="vh-100">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+
+                        <div class="card shadow-2-strong"
+                            style="border-radius: 1rem;     border-radius: 1rem;background: #24252b">
+                            <div class="modal-content rounded-4 shadow">
+
+                                <div class="modal-header p-5 pb-4 border-bottom-0">
+                                    <h1 class="fw-bold mb-0 fs-2">Contineo Login</h1>
+                                </div>
+
+                                <div class="modal-body p-5 pt-0">
+                                    <form action='login' method='POST'>
+                                        {{ form.hidden_tag() }}
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control rounded-4" id="floatingInput"
+                                                style="color:black;" placeholder="email" name="email"
+                                                title="valid email">
+                                            <label for="floatingInput" style="color:black;">Email address</label>
+                                        </div>
+
+                                        <div class="form-floating mb-3" style="color:black;">
+                                            <input type="password" class="form-control rounded-4 password"
+                                                name="password" id="floatingPassword" placeholder="Password"
+                                                title="password">
+                                            <label for="floatingPassword">Password <i
+                                                    class="bi bi-eye-slash"></i></label>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="form-check mb-0">
+                                                <input class="form-check-input me-2 mb-3" type="checkbox" value="1"
+                                                    id="checkbox" name="remember" />
+                                                <label class="form-check-label" for="checkbox">
+                                                    Remember me
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary"
+                                            type="submit">Login<i class="bi bi-box-arrow-in-right"></i></button>
+
+                                        <div class="col-md-15">
+                                            {% with messages = get_flashed_messages(with_categories=true) %}
+                                            {% if messages %}
+                                            {% for category, message in messages %}
+                                            <div class="alert alert-{{ category }}">
+                                                {{ message }}
+                                            </div>
+                                            {% endfor %}
+                                            {% endif %}
+                                            {% endwith %}
+                                        </div>
+
+                                        <hr class="my-2">
+
+                                        <small class="text-muted"><a href="#" class='forgot'>Forgot
+                                                password?</a></small>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+  
 </body>
+
 </html>

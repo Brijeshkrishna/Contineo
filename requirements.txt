@@ -3,3 +3,4 @@ Flask_Login==0.3.2
 gunicorn==20.1.0
 Werkzeug~=2.0.0
 jinja2~=3.0.3
+pymongo

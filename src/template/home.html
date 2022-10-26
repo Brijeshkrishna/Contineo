@@ -7,6 +7,6 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 <body>
-    <button onclick="location.href='http://192.168.1.6:8000/logout'" type="button">Logout</button>
+    <input type=button onClick="location.href='{{ url_for('logout') }}'" value='Logout'>
 </body>
 </html>

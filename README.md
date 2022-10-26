@@ -4,14 +4,14 @@ Making a clean,mobile responsive website like contineo
 ## TODO
 ### `Frontend`
 #### ` Professor `
-- [ ] Login
+- [X] Login
 - [ ] upload attendance         
 - [ ] graph
 - [ ] upload marks
 - [ ] routine (time table)
 
 #### ` Student` 
-- [ ] login                     
+- [X] login                     
 - [ ] attendance view
 - [ ] calender
 - [ ] notification (email or website)
@@ -21,7 +21,7 @@ Making a clean,mobile responsive website like contineo
 - [ ] group chart
 
 #### `Parent`
-- [ ] login
+- [X] login
 - [ ] attendance view
 - [ ] marks view
 - [ ] teachers messaging 
@@ -31,4 +31,3 @@ Making a clean,mobile responsive website like contineo
 - [ ] Database management
 - [ ] Testing
 - [ ] Publishing
-	
