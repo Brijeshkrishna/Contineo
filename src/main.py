@@ -1,5 +1,5 @@
 from bson import ObjectId
-from flask import *
+from flask import Flask,redirect,url_for,flash,render_template,session
 from .form import LoginForm
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager,UserMixin,login_user,logout_user,current_user,login_required
@@ -36,8 +36,7 @@ def login():
     if form.validate_on_submit():
         res =check_password(form.email.data,form.password.data)
         if res != None:
-            user = User()
-            user.id= res
+            user = User(res)
             login_user(user,remember=form.remember.data)
             return redirect(url_for('home'))
         else:

@@ -5,7 +5,7 @@ from flask_bcrypt import Bcrypt
 from typing import Optional
 
 
-client = MongoClient(
+client:MongoClient = MongoClient(
     "mongodb+srv://brijesh:sPVBlaQf9ZT93xHr@cluster0.cvljjpg.mongodb.net/?retryWrites=true&w=majority",
     server_api=ServerApi("1"),
 )
