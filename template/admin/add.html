@@ -1,0 +1,59 @@
+{% extends "admin/layout.html" %}
+{% block content %}
+
+<body style="background: #222831">
+
+  <main role="main" class="container">
+
+    <div class="col-md-7 rounded-4">
+      <div class="card rounded-4">
+        <div class="card-body">
+          <h5 class="card-title">Add New Student</h5>
+          <form class="row g-3">
+            <div class="col-md-12">
+              <div class="form-floating "> <input type="text" class="form-control rounded-3" id="floatingName" required
+                  placeholder="Name" pattern="^[A-Za-z]*$"> <label for="floatingName">Name</label></div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input type="text" class="form-control rounded-3" id="floatingUSN" required placeholder="USN"
+                  pattern="^1SI[0-9]{2}[A-Z]{2}[0-9]{3}$">
+                <label for="floatingEmail">USN</label>
+              </div>
+            </div>
+            <div class="col mb-6">
+              <div class="form-floating">
+                <input type="date" class="form-control" id="floatingData" required>
+                <label for="floatingData">Date for Birth</label>
+              </div>
+            </div>
+
+            <div class="col-16"> <label for="inputNumber" class="col-form-label">Upload Photo</label>
+              <div class="col-sm-10"> <input class="form-control" type="file" id="formFile" accept="image/*" required>
+              </div>
+            </div>
+
+
+            <div class="text-center"> <button type="submit" class="btn btn-primary rounded-3">Submit<svg version="1.0"
+                  xmlns="http://www.w3.org/2000/svg" width="24.000000pt" height="16.000000pt"
+                  viewBox="0 0 24.000000 24.000000" preserveAspectRatio="xMidYMid meet">
+
+                  <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                    <path
+                      d="M44 207 c-2 -7 -4 -52 -2 -98 l3 -84 48 -3 c42 -3 47 -1 47 18 0 13 8 24 19 27 28 7 43 43 39 99 l-3 49 -73 3 c-54 2 -74 -1 -78 -11z m72 -28 c10 -17 -13 -36 -27 -22 -12 12 -4 33 11 33 5 0 12 -5 16 -11z m12 -56 c2 -9 -7 -13 -27 -13 -30 0 -39 9 -24 24 11 10 46 3 51 -11z" />
+                    <path
+                      d="M200 67 c0 -10 -8 -17 -20 -17 -11 0 -20 -4 -20 -10 0 -5 9 -10 20 -10 12 0 20 -7 20 -17 0 -15 3 -14 22 5 l22 22 -22 22 c-19 19 -22 20 -22 5z" />
+                  </g>
+                </svg></button> <button type="reset" class="btn btn-secondary rounded-3">Reset <i
+                  class="bi bi-x-lg"></i> </button></div>
+
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+{% endblock content %}

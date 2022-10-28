@@ -1,0 +1,22 @@
+body {
+    background: #fafafa;
+    color: #000;
+    margin: 0;
+}
+
+.nav-link {
+    font-weight: bold;
+    color: #000000;
+    font-style: italic;
+    text-decoration: double;
+}
+
+
+#enable_tag {
+    border-style: groove;
+    border-width: 3px;
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-color: red;
+    border-radius: 8px;
+}
