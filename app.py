@@ -30,3 +30,7 @@ def load_user(user_id):
 def before_request() -> Response:
     if request.endpoint not in ["auth.login","static"] and not current_user.is_authenticated :
         return redirect(url_for('auth.login'))
+        
+@app.route("/")
+def root():
+    return redirect(url_for('admin.home'))
