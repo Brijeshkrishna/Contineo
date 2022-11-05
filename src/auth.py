@@ -13,7 +13,6 @@ def logout():
     return redirect(url_for('auth.login'))
 
 @login_required
-@auth.route('/', methods=['GET', 'POST'])
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:

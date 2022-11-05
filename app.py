@@ -6,7 +6,6 @@ from src.database import get_by_id
 from src.admin import admin
 from src.auth import auth
 from src.error import error
-import os
 
 app = Flask(__name__, template_folder="template", static_folder="static")
 app.secret_key = 'super secret key'
@@ -17,8 +16,8 @@ login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
 login_manager.session_protection = "strong"
 
-app.register_blueprint(admin, subdomain="admin")
-app.register_blueprint(auth, subdomain="auth")
+app.register_blueprint(admin, url_prefix="/admin")
+app.register_blueprint(auth, url_prefix="/auth")
 app.register_blueprint(error)
 
 
@@ -32,5 +31,4 @@ def home():
     return redirect(url_for("admin.home"))
 
 
-app.config['SERVER_NAME'] = os.environ.get("SERVER_NAME", "localhost.localdomain:10000")
 app = WsgiToAsgi(app)
