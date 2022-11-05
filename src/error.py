@@ -5,7 +5,7 @@ error = Blueprint("error", __name__, template_folder="template", static_folder="
 
 
 @error.app_errorhandler(404)
-def error_404(error: NotFound) -> Response:
+def error_404(error: NotFound) -> str:
     return render_template("error/error.html", error=error, code=404)
 
 

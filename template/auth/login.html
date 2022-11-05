@@ -10,7 +10,7 @@
                     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
 
                         <div class="card shadow-2-strong"
-                            style="border-radius: 1rem;     border-radius: 1rem;background: #24252b">
+                            style="border-radius: 1rem;background: #24252b">
                             <div class="modal-content rounded-4 shadow">
 
                                 <div class="modal-header p-5 pb-4 border-bottom-0">
@@ -18,13 +18,13 @@
                                 </div>
 
                                 <div class="modal-body p-5 pt-0">
-                                    <form action='login' method='POST'>
+                                    <form action='/login' method='POST'>
                                         {{ form.hidden_tag() }}
                                         <div class="form-floating mb-3">
-                                            <input type="email" class="form-control rounded-4" id="floatingInput"
-                                                style="color:black;" placeholder="email" name="email"
-                                                title="valid email">
-                                            <label for="floatingInput" style="color:black;">Email address</label>
+                                            <input type="text" class="form-control rounded-4" id="floatingInput"
+                                                style="color:black;" placeholder="Username" name="email_username"
+                                                title="valid username">
+                                            <label for="floatingInput" style="color:black;">Username</label>
                                         </div>
 
                                         <div class="form-floating mb-3" style="color:black;">
