@@ -8,4 +8,4 @@ RUN pip3 install -r requirements.txt
 
 WORKDIR /app/src
 
-CMD [ "gunicorn", "app:app" , "-b", "0.0.0.0:8000","--log-level", "debug", "--access-logfile", "-", "--logger-class", "gunicorn_color.Logger"] 
+CMD "uvicorn app:app --host $SERVER_NAME --port 10000"
