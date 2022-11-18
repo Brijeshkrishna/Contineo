@@ -1,10 +1,11 @@
+import datetime
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from bson.objectid import ObjectId
 from flask_bcrypt import Bcrypt
 from typing import Optional
 from src.model import User
-from datetime import date
+from datetime  import date
 
 client: MongoClient = MongoClient(
     "mongodb+srv://brijesh:sPVBlaQf9ZT93xHr@cluster0.cvljjpg.mongodb.net/?retryWrites=true&w=majority",
@@ -35,20 +36,33 @@ def add_user(name: str, usn: str, dob: date,password: str):
         print(dob.strftime("%d-%m-%y"))
         db.insert_one({"username": name, "usn": usn, "email": usn + "@sit.ac.in", "priority_level": 2,
                        "password_hash": bcrypt.generate_password_hash(password).decode("utf-8"),
-                       "dob" : dob})
+                       "dob" : dob.strftime("%Y-%m-%d")})
         return "Success",'success'
     return "USN exists",'danger'
 
+def update_user(old:str,name: str, usn: str, dob: date,password: str):
+
+    if (old != usn and check_student_exists(usn)) or  not check_student_exists(old):
+        return "USN exists check again",'danger'
+    db.update_many({ "usn": old },
+        { "$set": {"username": name, "usn": usn, "email": usn + "@sit.ac.in", "priority_level": 2,
+                       "password_hash": bcrypt.generate_password_hash(password).decode("utf-8"),
+                       "dob" : dob.strftime("%Y-%m-%d")} }
+    )
+    return "Success",'success'
+
+def delete_user(usn):
+    db.delete_one({"usn":usn}) 
 
 def get_all_student():
     return db.find({"priority_level": 2})
 
 
-def get_all_student_by_usn(usn: str):
+def get_student_by_usn(usn: str):
     return db.find_one({"usn": usn})
 
 
 def check_student_exists(usn: str):
-    if get_all_student_by_usn(usn) is None:
+    if get_student_by_usn(usn) is None:
         return 0
     return 1

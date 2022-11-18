@@ -19,7 +19,7 @@
                         <a class="nav-item nav-link" href="{{ url_for('admin.student') }}" {% if  request.endpoint == "admin.student" %}
                         {{ 'id=enable_tag' }} {% endif %}>Student Add <i class="bi bi-house-door"></i> </a>
                         <a class="nav-item nav-link" href="{{ url_for('admin.student_update') }}" {% if  request.endpoint == "admin.student_update" %}
-                        {{ 'id=enable_tag' }} {% endif %}>Student Update<i class="bi bi-house-door"></i> </a>
+                        {{ 'id=enable_tag' }} {% endif %}>Student Update <i class="bi bi-person-dash"></i> </a>
                         <a class="nav-item nav-link" href="{{ url_for('auth.logout') }}">logout <i class="bi bi-box-arrow-right"></i>
                         </a>
                     </div>
@@ -50,7 +50,7 @@
                     {{ form.hidden_tag() }}
                   <div class="col-md-12">
                     <div class="form-floating ">
-                        <input type="text" class="form-control rounded-3" id="floatingName" required placeholder="Name" pattern="^[A-Za-z]*$" name="name">
+                        <input type="text" class="form-control rounded-3" id="floatingName" required placeholder="Name" pattern="^[A-Za-z ]*$" name="name">
                         <label for="floatingName">Name</label></div>
                   </div>
                   <div class="col-md-6">

@@ -18,7 +18,13 @@ class Admin_addstudent(FlaskForm):
     usn = StringField("USN", validators=[DataRequired(), Regexp("^1[sS][iI][0-9][0-9][A-z][A-z][0-9][0-9][0-9]$")])
     dob = DateField("Date of Birth", validators=[DataRequired()])
     #pic = FileField("Photo", validators=[FileRequired(), FileAllowed(['png'], 'PNG only!')])
-
+class Admin_updatestudent(FlaskForm):
+    name = StringField("Name", validators=[DataRequired(), Regexp(
+        "^[A-z ]{2,25}$")])
+    usn = StringField("USN", validators=[DataRequired(), Regexp("^1[sS][iI][0-9][0-9][A-z][A-z][0-9][0-9][0-9]$")])
+    dob = DateField("Date of Birth", validators=[DataRequired()])
+    old = StringField("old", validators=[Regexp("^1[sS][iI][0-9][0-9][A-z][A-z][0-9][0-9][0-9]$")])
+    #pic = FileField("Photo", validators=[FileRequired(), FileAllowed(['png'], 'PNG only!')])
 
 
 class Admin_Student_view(FlaskForm):
