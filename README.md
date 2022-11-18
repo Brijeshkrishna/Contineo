@@ -27,7 +27,7 @@ Making a clean,mobile responsive website like contineo
 - [ ] teachers messaging 
 
 ### `Backend`
-- [ ] Validate the login
+- [X] Validate the login
 - [ ] Database management
 - [ ] Testing
 - [ ] Publishing
