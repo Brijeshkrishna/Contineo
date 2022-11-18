@@ -16,10 +16,14 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarToggle">
                     <div class="navbar-nav mr-auto" style="font-size: 20px;">
-                        <a class="nav-item nav-link" href="{{ url_for('admin.home') }}" {% if request.path=="/dashboard" %}
-                        {{ 'id=enable_tag' }} {% endif %}>Home <i class="bi bi-house-door"></i> </a>
-                        <a class="nav-item nav-link" href="{{ url_for('admin.dashboard_add') }}" {% if request.path=="/dashboard/add"
-                        %} {{ 'id=enable_tag' }} {% endif %}>Add <i class="bi bi-person-plus"></i></a>
+                        <a class="nav-item nav-link" href="{{ url_for('admin.home') }}"
+                                {% if request.endpoint == "admin.home" %} {{ 'id=enable_tag' }} {% endif %}>Dashboard
+                            <i class="bi bi-house-door"></i>
+                        </a>
+                        <a class="nav-item nav-link" href="{{ url_for('admin.student') }}" {% if request.endpoint == "admin.student"
+                        %} {{ 'id=enable_tag' }} {% endif %}>Student<i class="bi bi-person-plus"></i></a>
+                       <a class="nav-item nav-link" href="{{ url_for('admin.teacher') }}" {% if request.endpoint == "admin.teacher"
+                        %} {{ 'id=enable_tag' }} {% endif %}>Teacher<i class="bi bi-person-plus"></i></a>
                         <a class="nav-item nav-link" href="{{ url_for('auth.logout') }}">logout <i class="bi bi-box-arrow-right"></i>
                         </a>
                     </div>

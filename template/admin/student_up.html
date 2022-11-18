@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Admin {{ title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    </head>
+    <header class="site-header" style="padding-bottom: 100px;">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top" style="background: cadetblue;">
+            <div class="container">
+                <a class="navbar-brand mr-4" href="/" style="font-size: 30px;">Admin <i class="bi bi-gear"></i> </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav mr-auto" style="font-size: 20px;">
+                        <a class="nav-item nav-link" href="{{ url_for('admin.student') }}" {% if  request.endpoint == "admin.student" %}
+                        {{ 'id=enable_tag' }} {% endif %}>Student Add <i class="bi bi-house-door"></i> </a>
+                        <a class="nav-item nav-link" href="{{ url_for('admin.student_update') }}" {% if  request.endpoint == "admin.student_update" %}
+                        {{ 'id=enable_tag' }} {% endif %}>Student Update<i class="bi bi-house-door"></i> </a>
+                        <a class="nav-item nav-link" href="{{ url_for('auth.logout') }}">logout <i class="bi bi-box-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <body style="background: #222831">
+
+        <main role="main" class="container">
+      
+  
+          <div class="col-md-7 rounded-4">
+            <div class="card rounded-4">
+              <div class="card-body">
+                <h5 class="card-title">View and update</h5>
+
+                <div class="row g-3">
+                   
+                 
+                  <div class="col-md-12">
+                    <div class="form-floating">
+                      <input type="text" class="form-control rounded-3 usn_view" id="floatingUSN" required placeholder="USN" name="USN"
+                        pattern="^1[sS][iI][0-9]{2}[A-Z]{2}[0-9]{3}$">
+                      <label for="floatingUSN">USN</label>
+                    </div>
+                  </div>
+           
+                  <div class="text-center" style="padding-left: 290px;"> 
+                    <button type="submit" onclick="view()" class="btn btn-primary rounded-3">Submit<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="24.000000pt" height="16.000000pt" viewBox="0 0 24.000000 24.000000" preserveAspectRatio="xMidYMid meet">
+                        <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                          <path
+                            d="M44 207 c-2 -7 -4 -52 -2 -98 l3 -84 48 -3 c42 -3 47 -1 47 18 0 13 8 24 19 27 28 7 43 43 39 99 l-3 49 -73 3 c-54 2 -74 -1 -78 -11z m72 -28 c10 -17 -13 -36 -27 -22 -12 12 -4 33 11 33 5 0 12 -5 16 -11z m12 -56 c2 -9 -7 -13 -27 -13 -30 0 -39 9 -24 24 11 10 46 3 51 -11z"></path>
+                          <path
+                            d="M200 67 c0 -10 -8 -17 -20 -17 -11 0 -20 -4 -20 -10 0 -5 9 -10 20 -10 12 0 20 -7 20 -17 0 -15 3 -14 22 5 l22 22 -22 22 c-19 19 -22 20 -22 5z"></path>
+                        </g>
+                      </svg>
+                    </button>
+                    </div>
+                </div>
+                
+                <br><br>
+                
+                <div class="col-md-12 rounded-4 uploader" >
+                  <div class="card rounded-4">
+      
+                    <div class="card-body">
+      
+                        {% if data != {} %}
+                            <h5 class="card-title">Student view</h5>
+                            <form class="row g-3"  action="{{ url_for('admin.student_update') }}" enctype="multipart/form-data" method="POST">
+                                {{ form.hidden_tag() }}
+                            <div class="col-md-12">
+                                <div class="form-floating ">
+                                    <input type="text" class="form-control rounded-3" id="floatingName" required placeholder="Name" value="dasd" pattern="^[A-Za-z]*$" name="name"  >
+                                    <label for="floatingName">Name</label></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                <input type="text" class="form-control rounded-3" id="floatingUSN" required placeholder="USN" name="usn"
+                                    pattern="^1[sS][iI][0-9]{2}[A-Z]{2}[0-9]{3}$">
+                                <label for="floatingUSN">USN</label>
+                                </div>
+                            </div>
+                            <div class="col mb-6">
+                                <div class="form-floating">
+                                <input type="date" class="form-control" id="floatingData" required name="dob" >
+                                <label for="floatingData">Date for Birth</label>
+                                </div>
+                            </div>
+                
+                            <div class="col-16"> <label for="inputNumber" class="col-form-label">Upload Photo</label>
+                                <div class="col-sm-10"> <input class="form-control" type="file" id="formFile" accept="image/png"  name="pic">
+                                </div>
+                            </div>
+                
+                
+                            <div class="text-center"> <button type="submit" class="btn btn-primary rounded-3">Submit<svg version="1.0"
+                                    xmlns="http://www.w3.org/2000/svg" width="24.000000pt" height="16.000000pt"
+                                    viewBox="0 0 24.000000 24.000000" preserveAspectRatio="xMidYMid meet">
+                
+                                    <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                                    <path
+                                        d="M44 207 c-2 -7 -4 -52 -2 -98 l3 -84 48 -3 c42 -3 47 -1 47 18 0 13 8 24 19 27 28 7 43 43 39 99 l-3 49 -73 3 c-54 2 -74 -1 -78 -11z m72 -28 c10 -17 -13 -36 -27 -22 -12 12 -4 33 11 33 5 0 12 -5 16 -11z m12 -56 c2 -9 -7 -13 -27 -13 -30 0 -39 9 -24 24 11 10 46 3 51 -11z"></path>
+                                    <path
+                                        d="M200 67 c0 -10 -8 -17 -20 -17 -11 0 -20 -4 -20 -10 0 -5 9 -10 20 -10 12 0 20 -7 20 -17 0 -15 3 -14 22 5 l22 22 -22 22 c-19 19 -22 20 -22 5z"></path>
+                                    </g>
+                                </svg></button> <button type="reset" class="btn btn-secondary rounded-3">Delete <i
+                                    class="bi bi-x-lg"></i> </button></div>
+                
+                
+                            </form>
+
+                        {% else %}
+                         <h5 class="card-title">no student found</h5>
+                        {% endif %}
+      
+                      
+            
+                    </div>
+                  </div>
+                </div>
+      
+      
+              </div>
+            </div>
+          </div>
+      
+        </main>
+      </body>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/basic.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
+    <link crossorigin="anonymous"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script crossorigin="anonymous"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script crossorigin="anonymous"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script crossorigin="anonymous"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script crossorigin="anonymous"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+        <script>
+            async function request (usn) {
+                const response = await fetch(
+                  "/admin/student/view/?usn=" + usn,
+                );
+                return await response.json();
+              }
+              async function view () {
+                let usn = $(".usn_view").val();
+                request(usn).then((data) => {
+
+                  $("#floatingName").val(data.username);
+                  $("#floatingUSN").val(data.usn);
+                    console.log(data.username);
+                });
+                
+              }
+            
+
+        </script>
+        </html>
