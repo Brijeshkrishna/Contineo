@@ -102,9 +102,11 @@
                                 </div>
                             </div>
                 
-                            <div class="col-16"> <label for="inputNumber" class="col-form-label">Upload Photo</label>
-                                <div class="col-sm-10"> <input class="form-control" type="file" id="formFile" accept="image/png"  name="pic">
-                                </div>
+                            <div class="col mb-6">
+                              <div class="form-floating">
+                                <input type="number" class="form-control" id="floatingSem" required name="sem" pattern="[1-9]" >
+                                <label for="floatingSem">Sem</label>
+                              </div>
                             </div>
                 
                 
@@ -161,6 +163,8 @@
           $(".usn_view").val("");
           $("#floatingData").val("");
           $(".usn_view").val("");
+          $("#floatingSem").val("");
+          
           
           $(".uploader").hide();
           $("#head").hide();
@@ -198,6 +202,7 @@
                   $(".usn_view").val(data.usn);
                   $("#old_usn").val(data.usn);
                   $("#floatingData").val(data.dob);
+                  $("#floatingSem").val(data.sem);
                   $("#head").text("Student view");
                   $("#head").css("color", "black");
                   $("#head").show();

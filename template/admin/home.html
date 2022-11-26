@@ -2,6 +2,110 @@
 {% block content %}
 
 <body style="background: #222831">
-{{ current_user }}
+
+    <div style="margin-left: 65px;color:white;">
+
+        <h1>Students</h1>
+        <table class="table table-striped table-dark table-hover table-bordered" style="width: fit-content;color:aliceblue;">
+            
+            <thead>
+              <tr class="table-info" >
+                <th scope="col" >USN</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Sem</th>
+              </tr>
+            </thead>
+    
+            <tbody id="table_tbody">
+            </tbody>
+        </table>
+        <br><br>
+        <h1>Teachers</h1>
+    
+        <table class="table table-striped table-dark table-hover table-bordered" style="width: fit-content;color:aliceblue;">
+            
+            <thead>
+              <tr class="table-info" >
+                <th scope="col">Cname</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Sem</th>
+              </tr>
+            </thead>
+    
+            <tbody id="table_tbody_t">
+            </tbody>
+        </table>
+
+    </div>
+   
+
+
 </body>
+<script>
+    async function request () {
+        const response = await fetch(
+          "/admin/student/view/?usn=usn",
+        );
+        return await response.json();
+    };
+    async function request_t () {
+        const response = await fetch(
+          "/admin/teacher/view/?cname=cname",
+        );
+        return await response.json();
+    };
+
+    request().then((data) => {
+        if (JSON.stringify(data) != "{}" ){
+            data= data.data;
+
+            var game_list = document.getElementById("table_tbody");
+
+            let i = 0;
+       
+            while(i<data.length){
+                let alist = document.createElement("tr");
+           
+                alist.innerHTML = ` 
+                <th scope="row">${data[i]['usn']}</th>
+                <td>${data[i]['username']}</td>
+                <td>${data[i]['email']}</td>
+                <td>${data[i]['dob']}</td>
+                <td>${data[i]['sem']}</td>`;
+                game_list.appendChild(alist);
+                i++;
+            }
+        }
+    });
+
+
+    request_t().then((data) => {
+        if (JSON.stringify(data) != "{}" ){
+            data= data.data;
+
+            var game_list = document.getElementById("table_tbody_t");
+
+            let i = 0;
+       
+            while(i<data.length){
+                let alist = document.createElement("tr");
+                alist.innerHTML = ` 
+                <th scope="row">${data[i]['cname']}</th>
+                <td>${data[i]['username']}</td>
+                <td>${data[i]['email']}</td>
+                <td>${data[i]['dob']}</td>
+                <td>${data[i]['sem']}</td>`;
+                game_list.appendChild(alist);
+                i++;
+            }
+           
+        }});
+
+      
+</script>
+
 {% endblock content %}
