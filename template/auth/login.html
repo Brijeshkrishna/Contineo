@@ -27,11 +27,11 @@
                                             <label for="floatingInput" style="color:black;">Username</label>
                                         </div>
 
-                                        <div class="form-floating mb-3" style="color:black;">
+                                        <div class="form-floating mb-3" style="color:black;" >
                                             <input type="password" class="form-control rounded-4 password"
                                                 name="password" id="floatingPassword" placeholder="Password"
-                                                title="password">
-                                            <label for="floatingPassword">Password <i
+                                                title="password"  onforminput="show()" >
+                                            <label for="floatingPassword" >Password <i
                                                     class="bi bi-eye-slash"></i></label>
                                         </div>
                                         <div class="d-flex justify-content-between align-items-center">
@@ -74,4 +74,18 @@
         </section>
     </main>
 </body>
+
+<script>
+    
+    function show(){
+
+        var x = document.getElementById("floatingPassword");
+        if (x.type == "password") {
+            x.type = "text";
+        } else {
+        x.type = "password";
+        }
+    }
+</script>
+
 {% endblock content %}
